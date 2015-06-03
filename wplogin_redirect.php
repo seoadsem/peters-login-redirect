@@ -224,6 +224,9 @@ class rulRedirectFunctionCollection
         foreach( $out[0] as $instance => $full_match )
         {
             $replaced_variable = rulRedirectFunctionCollection::rul_get_variable( $out[1][ $instance ], $user );
+             if (preg_match('/.$/', $replaced_variable)) {
+		$replaced_variable = str_replace('.', '', $replaced_variable);
+	    }
             $string = str_replace( $full_match, $replaced_variable, $string );
         }
 
